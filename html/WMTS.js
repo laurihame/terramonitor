@@ -53,10 +53,10 @@ requirejs([
         }
 
 
-var serviceAddress2 = "https://mapserver.satellio.com/open/wmts/1.0.0/WMTSCapabilities.xml"
         // Layer displaying Global Hillshade based on GMTED2010
         var layerIdentifier2 = "rgb_date";
-        
+
+        // Called asynchronously to parse and create the WMTS layer
         var createLayer2 = function (xmlDom) {
 
             // Create a WmtsCapabilities object from the XML DOM
@@ -75,19 +75,18 @@ var serviceAddress2 = "https://mapserver.satellio.com/open/wmts/1.0.0/WMTSCapabi
 
 
 
-
-
         // Web Map Tiling Service information from
         //var serviceAddress = "https://tiles.geoservice.dlr.de/service/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0";
         //var serviceAddress = "https://maps.terramonitor.com/49e47e0490d92c1f82b3cbf046a70593c1cc9e35/free/wmts/1.0.0/WMTSCapabilities.xml"
         //var serviceAddress = "https://mapserver.satellio.com/open/wmts?SERVICE=WMTS&REQUEST=GetCapabilities&VERSION=1.0.0"
         var serviceAddress = "https://mapserver.satellio.com/open/wmts/1.0.0/WMTSCapabilities.xml"
+        
         // Layer displaying Global Hillshade based on GMTED2010
         var layerIdentifier = "rgb";
 
         // Called asynchronously to parse and create the WMTS layer
         var createLayer = function (xmlDom) {
-
+		
             // Create a WmtsCapabilities object from the XML DOM
             var wmtsCapabilities = new WorldWind.WmtsCapabilities(xmlDom);
             // Retrieve a WmtsLayerCapabilities object by the desired layer name
@@ -101,20 +100,14 @@ var serviceAddress2 = "https://mapserver.satellio.com/open/wmts/1.0.0/WMTSCapabi
             wwd.addLayer(wmtsLayer);
             layerManager.synchronizeLayerList();
         };
-        
-        
+
         // Called if an error occurs during WMTS Capabilities document retrieval
         var logError = function (jqXhr, text, exception) {
             console.log("There was a failure retrieving the capabilities document: " + text + " exception: " + exception);
         };
-        
+
         $.get(serviceAddress).done(createLayer).fail(logError);
-        
-        
-		$.get(serviceAddress2).done(createLayer2).fail(logError);
-        
-
-
+        $.get(serviceAddress).done(createLayer2).fail(logError);
         // Create a layer manager for controlling layer visibility.
         var layerManager = new LayerManager(wwd);
 });

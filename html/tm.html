@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>Terramonitor goes WebWorldWind</title>
     <!--NOTE: Most Web WorldWind examples use jquery, Bootstrap and requirejs but those technologies are NOT-->
     <!--required by Web WorldWind. See SimplestExample.html for an example of using Web WorldWind without them.-->
     <meta charset="utf-8">
@@ -12,11 +13,15 @@
 </head>
 <body>
 <div class="container">
-    <div class="jumbotron hidden-xs">
-        <h1 style="text-align:center">WorldWind WMS</h1>
-    </div>
     <div class="row">
         <div class="col-sm-3">
+            <h4>Terramonitor goes WebWorldWind</h1>
+            <p>Terramonitor is the most up-to-date cloudless satellite map of the globe and gives professionals the power to analyze, build and organize geographical information into actionable insights. The service provides global land coverage, daily updates, multiple data layers with timestamp and GIS integration. The images are produced by combining different satellite data sources up to 0.5 meter resolution. More info on the service can be found here: <a target="_blank" href="https://www.terramonitor.com">www.terramonitor.com</a></p>
+            <p>This application shows the Terramonitor True Color layer and the corresponding timestamp layer in the WebWorldWind Interface. It is a great example on how the Terramonitor data can be used for visualization, education and research.</p>
+            <ul>
+                <li><a target="_blank" href="https://www.youtube.com/watch?v=ubrTYAFAKyc">3 minute introduction video</a></li>
+                <li><a target="_blank" href="https://github.com/laurihame/terramonitor">Source code</a></li>
+            </ul>
             <h4>Projection</h4>
             <div class="dropdown" id="projectionDropdown">
             </div>
@@ -25,7 +30,7 @@
             <div class="list-group" id="layerList">
             </div>
             <br>
-            <h4>Destination</h4>
+            <!--<h4>Destination</h4>
             <div class="input-group" id="searchBox">
                 <input type="text" class="form-control" placeholder="GoTo" id="searchText"/>
                 <span class="input-group-btn">
@@ -33,7 +38,7 @@
                         <span class="glyphicon glyphicon-search"></span>
                     </button>
                 </span>
-            </div>
+            </div>-->
         </div>
         <div class="col-sm-9" id="globe">
             <canvas id="canvasOne" width="1000" height="1000"
